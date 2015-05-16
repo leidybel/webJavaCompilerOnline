@@ -1,0 +1,39 @@
+
+<html ng-app="modone">
+    <head>
+        <title>CompilerOnline</title>
+    </head>
+    <body>
+        <h1>CompilerOnline</h1>
+
+        <!-- Angular.js -->
+        <script src="js/libs/angular.min.js"></script>
+        <script src="js/libs/angular-route.js"></script>
+        <script src="js/libs/appmodule.js"></script>
+        
+        <!-- Sock.js && Stomp for Websockets libraries -->
+        <script src="js/libs/sockjs-0.3.min.js"></script>
+        <script src="js/libs/stomp.js"></script>
+
+        <script src="js/libs/websockmodule.js"></script>
+        <script src="js/guardar.js"></script>
+        
+       
+        <div id = "controlId" ng-controller="control as con">
+        
+        
+        <!--Destino : <input type="text" name="origen" ng-model="origen"-->
+        <br>
+        <textarea disabled="true" id="varia" rows="10" cols="50" ng-model="origen"></textarea><br>   
+        <br>
+        <br>
+        <textarea  id="mensaje" rows="10" cols="50" ng-model="mensaje" ng-keyup="pos()"></textarea><br>
+        <br>
+               
+        <button class="btn btn-primary" ng-click="compilar()">Compilar</button><br>
+        <br>
+         
+        </div>
+     
+    </body>
+</html>
