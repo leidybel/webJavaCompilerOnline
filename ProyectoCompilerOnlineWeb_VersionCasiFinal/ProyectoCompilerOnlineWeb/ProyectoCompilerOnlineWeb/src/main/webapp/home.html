@@ -1,7 +1,25 @@
 
-<html ng-app="modone">
+<html ng-app="modone" lang ="en">
     <head>
-        <title>CompilerOnline</title>
+
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <meta name="robots" content="all">
+        <link rel="stylesheet" type="text/css" href="startbootstrap-sb-admin-1.0.3/css_tree/_styles.css" media="screen">
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>JavaCompilerOnline</title>
+
+        <link href="startbootstrap-sb-admin-1.0.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="startbootstrap-sb-admin-1.0.3/css/sb-admin.css" rel="stylesheet">
+
+        <link href="startbootstrap-sb-admin-1.0.3/css/plugins/morris.css" rel="stylesheet">
+
+        <link href="startbootstrap-sb-admin-1.0.3/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
     </head>
     <body>
         <h1>CompilerOnline</h1>
@@ -10,29 +28,211 @@
         <script src="js/libs/angular.min.js"></script>
         <script src="js/libs/angular-route.js"></script>
         <script src="js/libs/appmodule.js"></script>
-        
+
         <!-- Sock.js && Stomp for Websockets libraries -->
         <script src="js/libs/sockjs-0.3.min.js"></script>
         <script src="js/libs/stomp.js"></script>
 
         <script src="js/libs/websockmodule.js"></script>
         <script src="js/guardar.js"></script>
-        
-       
-        <div id = "controlId" ng-controller="control as con">
-        
-        <!--Destino : <input type="text" name="origen" ng-model=      "origen"-->
-                <br>
-            <textarea disabled="true" id="varia" rows="10" cols="50" ng-model="origen"></textarea><br>   
-                <br>
-                <br>
-            <textarea  id="mensaje" rows="10" cols="50" ng-model="mensaje" ng-keyup="pos()"></textarea><br>
-                <br>
-               
-            <button class="btn btn-primary" ng-click="compilar()">Compilar</button><br>
-            <br>
-         
+
+        <script src="startbootstrap-sb-admin-1.0.3/js/jquery.js"></script>
+        <script src="startbootstrap-sb-admin-1.0.3/js/bootstrap.min.js"></script>
+        <script src="startbootstrap-sb-admin-1.0.3/js/plugins/morris/raphael.min.js"></script>
+        <script src="startbootstrap-sb-admin-1.0.3/js/plugins/morris/morris.min.js"></script>
+        <script src="startbootstrap-sb-admin-1.0.3/js/plugins/morris/morris-data.js"></script>
+
+
+        <div id = "controlId" ng-controller="control as con" id="wrapper">
+
+            <div id="wrapper">
+
+                <!-- Navigation -->
+                <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html" >JavaCompilerOnline</a>
+                    </div>
+                    <!-- Top Menu Items -->
+                    <ul class="nav navbar-right top-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                            <ul class="dropdown-menu message-dropdown">
+                                <li class="message-preview">
+                                    <a href="#"></a>
+                                </li>
+
+                                <li class="message-preview">
+                                    <a href="#">
+                                        <div class="media"> 
+                                            <span class="pull-left">
+                                                <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                            </span>
+                                            <div class="media-body">
+                                                <h5 class="media-heading"><strong>Sing in</strong>
+                                                </h5>
+                                                <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                            <ul class="dropdown-menu alert-dropdown">
+                                <li>
+                                    <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                                </li>
+
+                                <li class="divider"></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>Sing in<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav side-nav">
+                            <li >
+                                <a href="index.html"><i class="fa fa-cog fa-spin"></i> Archivos</a>
+
+                                <br>
+
+                                <label for="folder1">Folder 1</label> <input type="checkbox" checked disabled id="folder1" /> 
+                                <ol>
+                                    <li class="file"><a href="document.html.pdf">File 1</a></li>
+                                    <li>
+                                        <label for="subfolder1">Subfolder 1</label> <input type="checkbox" id="subfolder1" /> 
+                                        <ol>
+                                            <li class="file"><a href="">Filey 1</a></li>
+                                            <li>
+                                                <label for="subsubfolder1">Subfolder 1</label> <input type="checkbox" id="subsubfolder1" /> 
+                                                <ol>
+                                                    <li class="file"><a href="">File 1</a></li>
+                                                    <li>
+                                                        <label for="subsubfolder2">Subfolder 1</label> <input type="checkbox" id="subsubfolder2" /> 
+                                                        <ol>
+                                                            <li class="file"><a href="">Subfile 1</a></li>
+                                                            <li class="file"><a href="">Subfile 2</a></li>
+                                                            <li class="file"><a href="">Subfile 3</a></li>
+                                                            <li class="file"><a href="">Subfile 4</a></li>
+                                                            <li class="file"><a href="">Subfile 5</a></li>
+                                                            <li class="file"><a href="">Subfile 6</a></li>
+                                                        </ol>
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                            <li class="file"><a href="">File 3</a></li>
+                                            <li class="file"><a href="">File 4</a></li>
+                                            <li class="file"><a href="">File 5</a></li>
+                                            <li class="file"><a href="">File 6</a></li>
+                                        </ol>
+                                    </li>
+
+                                    <li>
+                                        <label for="folder2">Folder 2</label> <input type="checkbox" id="folder2" /> 
+                                        <ol>
+                                            <li class="file"><a href="">File 1</a></li>
+                                            <li>
+                                                <label for="subfolder2">Subfolder 1</label> <input type="checkbox" id="subfolder2" /> 
+                                                <ol>
+                                                    <li class="file"><a href="">Subfile 1</a></li>
+                                                    <li class="file"><a href="">Subfile 2</a></li>
+                                                    <li class="file"><a href="">Subfile 3</a></li>
+                                                    <li class="file"><a href="">Subfile 4</a></li>
+                                                    <li class="file"><a href="">Subfile 5</a></li>
+                                                    <li class="file"><a href="">Subfile 6</a></li>
+                                                </ol>
+                                            </li>
+                                        </ol>
+                                    </li>
+
+
+                                    <li>
+                                        <label for="folder5">Folder 3</label> <input type="checkbox" id="folder5" /> 
+                                        <ol>
+                                            <li class="file"><a href="">File 1</a></li>
+                                            <li>
+                                                <label for="subfolder5">Subfolder 1</label> <input type="checkbox" id="subfolder5" /> 
+                                                <ol>
+                                                    <li class="file"><a href="">Subfile 1</a></li>
+                                                    <li class="file"><a href="">Subfile 2</a></li>
+                                                    <li class="file"><a href="">Subfile 3</a></li>
+                                                    <li class="file"><a href="">Subfile 4</a></li>
+                                                    <li class="file"><a href="">Subfile 5</a></li>
+                                                    <li class="file"><a href="">Subfile 6</a></li>
+                                                </ol>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+                </nav>
+
+                <div id="page-wrapper">
+
+                    <div class="container-fluid">
+
+                        <!-- Page Heading -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1 class="page-header">
+                                    JavaCompilerOnline <small> </small>
+                                </h1>
+                                <ol class="breadcrumb">
+                                    <li class="active">
+
+                                        <button class="btn btn-primary " ng-click="compilar()"><i class="fa fa-code" ></i> Compilar</button>
+
+                                        <button class="btn btn-primary " ng-click=" "><i class="fa fa-code" ></i> Ejecutar</button>
+
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <textarea class="form-control" rows="16" id="comment" style="border:groove 2px" 
+                                      disabled="true" id="varia" ng-model="origen" ></textarea>
+                        </div>
+
+                        <div class="row"><br>
+                            <textarea class="form-control" rows="16" id="comment1" style=" border:groove 2px" 
+                                      id="mensaje" ng-model="mensaje" ng-keyup="pos()"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-     
+
+
+
     </body>
 </html>
