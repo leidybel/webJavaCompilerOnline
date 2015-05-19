@@ -1,0 +1,47 @@
+html, body, #wrapper {
+    height: 100%;
+    width:100%;
+}
+
+body {
+    padding-top: 57px;
+}
+
+#barra-superior {
+    border-color: #222;
+    padding: 0 20px;
+}
+
+#barra-superior h3 {
+    color: #FFF;
+    margin: 15px 0;
+}
+
+#controlId {
+    display: flex;
+    flex-direction: row;
+    min-height: 100%;
+}
+
+#controlId #imgCargando {
+    float: right;
+    width: 32px;
+}
+
+#controlId textarea {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+}
+
+#barra-proyectos {
+    background: #222;
+}
+
+#barra-proyectos #opciones {
+    margin-bottom: 10px;
+}
+
+.CodeMirror {
+    border: 1px solid #CCC;
+}
